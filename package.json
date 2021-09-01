@@ -1,0 +1,19 @@
+{
+  "name": "fluidity-library-project-triskuit",
+  "version": "1.0.0",
+  "description": "## Instructions:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TechtonicAcademy/fluidity-library-project-triskuit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TechtonicAcademy/fluidity-library-project-triskuit/issues"
+  },
+  "homepage": "https://github.com/TechtonicAcademy/fluidity-library-project-triskuit#readme"
+}
