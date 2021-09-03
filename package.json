@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/TechtonicAcademy/fluidity-library-project-triskuit/issues"
   },
-  "homepage": "https://github.com/TechtonicAcademy/fluidity-library-project-triskuit#readme"
+  "homepage": "https://github.com/TechtonicAcademy/fluidity-library-project-triskuit#readme",
+  "dependencies": {
+    "@parcel/transformer-sass": "^2.0.0-rc.0"
+  },
+  "devDependencies": {
+  }
 }
