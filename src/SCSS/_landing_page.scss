@@ -42,6 +42,13 @@
         border-radius: 5px;
         padding: 6px 10px;
         color: $text-color;
+        margin: 4px 0;
+
+        &--solid {
+            background: black;
+            color:white;
+            border: none;
+        }
     }
 
     &__p {
