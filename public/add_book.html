@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/SCSS/index.scss">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="nav__left">
+            <div class="nav__logo">The Library</div>
+        </div>
+        <div class="nav__right">
+            <img src="/src/SCSS/assets/images/Hamburger_icon.svg" alt="Menu Icon" class="nav__icon">
+        </div>
+    </nav>
+
+    <form action="#" class="edit_form">
+
+        <h1>Edit Book</h1>
+        <label for="title" class="edit_form__label">Title</label>
+        <input type="text" class="edit_form__input edit_form__input--block" name="title" id="">
+
+        <label for="author" class="edit_form__label">Author</label>
+        <input type="text" class="edit_form__input edit_form__input--block" name="author">
+
+        <img src="../src/SCSS/assets/images/books/placeholder_book_cover.jpeg" 
+            alt="Book cover"
+            class="edit_form__image"
+            >
+        <button type="button" class="edit_form__btn">Change Image</button>
+
+        <label for="synopsis" class="edit_form__label">Synopsis</label>
+        <textarea name="synopsis" class="edit_form__input edit_form__input--block" id="" cols="30" rows="10"></textarea>
+
+        <label for="publish_date" class="edit_form__label">Published</label>
+        <input type="date" class="edit_form__input" name="published_date">
+
+        <label for="pages" class="edit_form__label">Pages</label>
+        <input type="number" class="edit_form__input" name="pages" min=1 max=2000>
+
+        <span class="edit_form__rating">Rating</span>
+        <span class="edit_form__stars">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+        </span>
+
+        <button type="submit" class="edit_form__btn edit_form__btn--submit">Submit</button>
+        <button type="button" class="edit_form__btn">Cancel</button>
+
+    </form>
+
+    <footer class="footer">
+        <p class="footer__text">
+            Copyright 2021 ya boi
+        </p>
+    </footer>
+
+</body>
+
+</html>
