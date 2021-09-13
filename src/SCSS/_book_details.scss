@@ -1,34 +1,107 @@
 .details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "title"
+        "img"
+        "auth"
+        "rating"
+        "pub"
+        "page"
+        "desc"
+        "btns";
+    width: 90%;
+    margin: 30px auto;
+
+    @include sm {
+        width: 480px;
+    }
+    @include md {
+        width: 769px;
+        grid-template-areas:
+            "img title title"
+            "img auth auth"
+            "img pub pub"
+            "img page page"
+            "img desc desc"
+            "rating desc desc"
+            "btns btns btns";
+    }
+    @include lg {
+        width: 1025px;
+    }
 
     &__title {
         font-size: 2rem;
-        padding: 20px;
-    }
+        grid-area: title;
+        text-align: center;
+
+        @include md {text-align: left;}
+    }                                              
 
     &__image {
-        width: 60%;
+        width: 250px;
+        margin: auto;
+        grid-area: img;
+        padding: 20px;
+
+        @include md {
+            width: 80%;
+            object-fit: contain;
+        }
+    }
+
+    &__pages {
+        grid-area: page;
     }
 
     &__author {
         font-size: 1.6rem;
-        padding: 15px;
+        grid-area: auth;
+        text-align: center;
+        @include md {text-align: left;}
+
     }
 
     &__rating {
+        grid-area: rating;
+        margin: auto;
+        padding: 20px;
+    }
+
+    &__label {
+        @include md { display:none; }
     }
 
     &__stars {
     }
 
     &__published {
+        grid-area: pub;
     }
 
     &__summary {
-        margin: $page-margin;
         text-align: justify;
-        padding: 20px 0;
+        grid-area: desc;
+
+        @include md {
+            padding: 0;
+        }
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        grid-area: btns;
+        margin: auto;
+
+
+        @include md {
+            padding: 40px 0;
+            flex-direction: row;
+            column-gap: 20px;
+        }
     }
 }
