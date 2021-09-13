@@ -7,14 +7,35 @@
         display: block;
         width: 100%;
         border: none;
-        
     }
+    
+    @include md {display: none;}
 }
 
 .library {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: auto;
+
+    &__title {
+        width: 100%;
+        text-align: center;
+    }
+
+    @include sm {width: 480px;}
+    @include md {width: 769px;}
+    @include lg {width: 1025px;}
+
+    &__grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include sm {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            column-gap: 50px;
+        }
+    }
 
 }
 
