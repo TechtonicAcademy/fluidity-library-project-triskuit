@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/SCSS/index.scss">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="nav">
+        <div class="nav__wrapper">
+            <div class="nav__left">
+                <div class="nav__logo">The Library</div>
+            </div>
+            <div class="nav__right">
+                <ul class="nav__links">
+                    <li class="nav__li"><a href="landing_page.html" class="nav__link nav__link--active">home</a></li>
+                    <li class="nav__li"><a href="bookshelf_view.html" class="nav__link">bookshelf</a></li>
+                    <li class="nav__li"><a href="add_book.html" class="nav__link">add book</a></li>
+                    <form action="#" class="nav__form">
+                        <input type="text" placeholder="Search by Title/Author" class="nav__search">
+                        <button class="nav__button" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </ul>
+                <img src="/src/SCSS/assets/images/Hamburger_icon.svg" alt="Menu Icon" class="nav__icon">
+            </div>
+        </div>
+    </nav>
+
+    <section class="details">
+
+        <div class="details__title">Black Box Thinking</div>
+        <img src="/src/SCSS/assets/images/books/black_box_thinking.jpeg" class="details__image" />
+        <div class="details__author">Matthew Syed</div>
+        <div class="details__rating">
+            <span class="details__label">Rating</span>
+            <span class="details__stars">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+            </span>
+        </div>
+        <span class="details__published">Published: June 1st, 1975</span>
+        <span class="details__pages">300 pages</span>
+        <p class="details__summary">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat eius voluptate
+            maiores similique accusamus minima libero corrupti cum ea dolore iusto voluptatem, culpa eum iste dolores
+            omnis sed ipsum recusandae possimus perspiciatis doloremque ad. Autem, pariatur atque. Harum fugiat sit
+            repudiandae, nesciunt nam accusamus! Saepe explicabo necessitatibus iusto unde asperiores ipsam illo
+            excepturi blanditiis, sequi at suscipit error, vitae facere laboriosam. Ab, temporibus aspernatur. Nesciunt
+            minus praesentium modi incidunt neque, illo quo possimus ipsa mollitia aperiam quis natus repudiandae
+            ducimus non corrupti eligendi blanditiis amet minima itaque debitis cupiditate eius. Magnam quis sunt optio
+            nemo quas quam totam doloremque possimus!</p>
+
+        <div class="details__links">
+            <a href="#" class="main__link">Edit This Book</a>
+            <a href="#" class="main__link main__link--solid">Back to Shelf</a>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <p class="footer__text">
+            Copyright 2021 ya boi
+        </p>
+    </footer>
+
+</body>
+
+</html>
