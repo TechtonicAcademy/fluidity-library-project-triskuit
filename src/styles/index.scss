@@ -1,9 +1,9 @@
-@import '_variables';
-@import '_mixins';
-@import '_landing_page';
-@import '_bookshelf';
-@import '_book_details';
-@import '_edit_book';
+@import './partials/variables';
+@import './partials/_mixins';
+@import './partials/_landing_page';
+@import './partials/_bookshelf';
+@import './partials/_book_details';
+@import './partials/_edit_book';
 
 body {
     margin: 0;
