@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <h1>
+    <>
       <Router>
         <Header />
         <Switch>
@@ -27,7 +27,7 @@ const App = () => {
         </Switch>
         <Footer />
       </Router>
-    </h1>
+    </>
   );
 };
 
