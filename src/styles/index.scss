@@ -47,6 +47,12 @@ body {
     &__logo {
         font-size: 40px;
         margin: 0;
+        text-decoration: none;
+        color: black;
+        
+        :hover {
+            text-decoration: underline;
+        }
     }
 
     &__links {
@@ -130,6 +136,7 @@ body {
     margin-top: 10px;
 
     &__text {
+        font-size: 10px;
         margin: auto;
         padding: 10px
     }
