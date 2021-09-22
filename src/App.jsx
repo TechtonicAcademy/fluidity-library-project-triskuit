@@ -5,6 +5,7 @@ import Bookshelf from './components/Bookshelf';
 import NotFound from './components/NotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import BookDetails from './components/BookDetails';
 
 const App = () => {
   return (
@@ -15,11 +16,17 @@ const App = () => {
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route exact path="/add">
+          <Route path="/add">
             <BookForm />
           </Route>
-          <Route exact path="/bookshelf">
+          <Route path="/edit">
+            <BookForm />
+          </Route>
+          <Route path="/bookshelf">
             <Bookshelf />
+          </Route>
+          <Route path="/details">
+            <BookDetails />
           </Route>
           <Route>
             <NotFound />
