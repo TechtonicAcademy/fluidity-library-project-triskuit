@@ -1,8 +1,28 @@
+import { useRef, useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 function Header() {
+  const [menuToggle, setMenuToggle] = useState(false);
+  const head = useRef(null);
+
+  const toggle = (bool) =>
+    setMenuToggle((prev) => {
+      if (bool === false || bool === true) return bool;
+      return !prev;
+    });
+
+  useEffect(() => {
+    const outsideClick = (e) => {
+      if (menuToggle && head.current && !head.current.contains(e.target)) {
+        setMenuToggle(false);
+      }
+    };
+    document.addEventListener('mousedown', outsideClick);
+    return () => document.removeEventListener('mousedown', outsideClick);
+  }, [menuToggle]);
+
   return (
-    <nav className="nav">
+    <nav className="nav" ref={head}>
       <div className="nav__wrapper">
         <div className="nav__left">
           <Link to="/" className="nav__logo">
@@ -10,13 +30,16 @@ function Header() {
           </Link>
         </div>
         <div className="nav__right">
-          <ul className="nav__links">
+          <ul
+            className={`nav__links ${menuToggle ? 'nav__links--visible' : ''}`}
+          >
             <li className="nav__li">
               <NavLink
                 exact
                 to="/"
                 className="nav__link"
                 activeClassName="nav__link--active"
+                onClick={() => toggle(false)}
               >
                 home
               </NavLink>
@@ -26,6 +49,7 @@ function Header() {
                 to="/bookshelf"
                 className="nav__link"
                 activeClassName="nav__link--active"
+                onClick={() => toggle(false)}
               >
                 bookshelf
               </NavLink>
@@ -35,6 +59,7 @@ function Header() {
                 to="/add"
                 className="nav__link"
                 activeClassName="nav__link--active"
+                onClick={() => toggle(false)}
               >
                 add book
               </NavLink>
@@ -45,12 +70,18 @@ function Header() {
                 placeholder="Search by Title/Author"
                 className="nav__search"
               />
-              <button className="nav__button" type="button">
+              <button className="nav__button" type="submit">
                 <i className="fas fa-search" />
               </button>
             </form>
           </ul>
-          <div className="nav__icon">
+          <div
+            className="nav__icon"
+            onClick={toggle}
+            onKeyDown={toggle}
+            role="button"
+            tabIndex={0}
+          >
             <i className="fas fa-bars" />
           </div>
         </div>
