@@ -1,47 +1,63 @@
-import { Link } from 'react-router-dom';
-import BlackBoxThinking from '../styles/assets/images/books/black_box_thinking.jpeg';
+import { Link, useParams, useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import coverPlaceHolder from '../styles/assets/images/books/placeholder_book_cover.jpeg';
+import { getBook, deleteBook } from '../utils/API';
+import StarRating from './StarRating';
 
 function BookDetails() {
-  return (
+  const { id } = useParams();
+  const history = useHistory();
+  const [book, setBook] = useState({});
+
+  useEffect(() => {
+    getBook(id)
+      .then(({ data }) => setBook(data))
+      .catch((err) => {
+        console.log(err);
+        history.push('/bookshelf');
+      });
+  }, []);
+
+  const { title, author, datePublished, pages, rating, synopsis } = book;
+
+  const clickBookDelete = (bookID) => {
+    deleteBook(bookID);
+    history.push('/bookshelf');
+  };
+
+  return Object.keys(book).length !== 0 ? (
     <section className="details">
-      <div className="details__title">Black Box Thinking</div>
-      <img src={BlackBoxThinking} className="details__image" alt="book cover" />
-      <div className="details__author">Matthew Syed</div>
+      <div className="details__title">{title}</div>
+      <img src={coverPlaceHolder} className="details__image" alt="book cover" />
+      <div className="details__author">{author}</div>
       <div className="details__rating">
         <span className="details__label">Rating</span>
-        <span className="details__stars">
-          <i className="fa fa-star" aria-hidden="true" />
-          <i className="fa fa-star" aria-hidden="true" />
-          <i className="fa fa-star" aria-hidden="true" />
-          <i className="fa fa-star" aria-hidden="true" />
-          <i className="far fa-star" aria-hidden="true" />
-        </span>
+        <StarRating rating={rating} color="black" className="details__rating" />
       </div>
-      <span className="details__published">Published: June 1st, 1975</span>
-      <span className="details__pages">300 pages</span>
-      <p className="details__summary">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat eius
-        voluptate maiores similique accusamus minima libero corrupti cum ea
-        dolore iusto voluptatem, culpa eum iste dolores omnis sed ipsum
-        recusandae possimus perspiciatis doloremque ad. Autem, pariatur atque.
-        Harum fugiat sit repudiandae, nesciunt nam accusamus! Saepe explicabo
-        necessitatibus iusto unde asperiores ipsam illo excepturi blanditiis,
-        sequi at suscipit error, vitae facere laboriosam. Ab, temporibus
-        aspernatur. Nesciunt minus praesentium modi incidunt neque, illo quo
-        possimus ipsa mollitia aperiam quis natus repudiandae ducimus non
-        corrupti eligendi blanditiis amet minima itaque debitis cupiditate eius.
-        Magnam quis sunt optio nemo quas quam totam doloremque possimus!
-      </p>
+      <span className="details__published">{datePublished}</span>
+      <span className="details__pages">{pages}</span>
+      <p className="details__summary">{synopsis}</p>
 
       <div className="details__links">
-        <Link to="/edit" className="main__link">
-          Edit This Book
+        <Link to={`/edit/${id}`} className="main__link">
+          Edit
         </Link>
+        <button
+          type="button"
+          className="main__link main__link--delete"
+          onClick={() => {
+            clickBookDelete(id);
+          }}
+        >
+          Delete
+        </button>
         <Link to="/bookshelf" className="main__link main__link--solid">
-          Back to Shelf
+          Back
         </Link>
       </div>
     </section>
+  ) : (
+    <></>
   );
 }
 

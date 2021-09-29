@@ -21,13 +21,13 @@ const App = () => {
           <Route path="/add">
             <BookForm />
           </Route>
-          <Route path="/edit">
+          <Route path="/edit/:id">
             <Edit />
           </Route>
           <Route path="/bookshelf">
             <Bookshelf />
           </Route>
-          <Route path="/details">
+          <Route path="/details/:id">
             <BookDetails />
           </Route>
           <Route>
