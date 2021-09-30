@@ -7,7 +7,7 @@ export const getBooks = () => {
 };
 
 export const getBook = (id) => {
-  return axios.get(`${endpoint}/posts/${id}`);
+  return axios.get(`${endpoint}/books/${id}`);
 };
 
 export const addBook = (book) => {
@@ -19,5 +19,5 @@ export const addBook = (book) => {
 };
 
 export const deleteBook = (id) => {
-  return axios.delete(`${endpoint}/${id}`);
+  return axios.delete(`${endpoint}/books/${id}`);
 };

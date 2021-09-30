@@ -37,8 +37,11 @@
         grid-area: title;
         text-align: center;
 
-        @include md {text-align: left;}
-    }                                              
+        @include md {
+            text-align: left;
+            min-width: 100%;
+        }
+    }
 
     &__image {
         width: 250px;
@@ -47,6 +50,7 @@
         padding: 20px;
 
         @include md {
+            max-width: 300px;
             width: 80%;
             object-fit: contain;
         }
@@ -60,8 +64,9 @@
         font-size: 1.6rem;
         grid-area: auth;
         text-align: center;
-        @include md {text-align: left;}
-
+        @include md {
+            text-align: left;
+        }
     }
 
     &__rating {
@@ -71,10 +76,10 @@
     }
 
     &__label {
-        @include md { display:none; }
-    }
-
-    &__stars {
+        padding-right: 10px;
+        @include md {
+            display: none;
+        }
     }
 
     &__published {
@@ -96,7 +101,6 @@
         row-gap: 10px;
         grid-area: btns;
         margin: auto;
-
 
         @include md {
             padding: 40px 0;
