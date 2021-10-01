@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import placeHolderCover from '../styles/assets/images/books/placeholder_book_cover.jpeg';
+import placeHolderCover from '../../styles/assets/images/books/placeholder_book_cover.jpeg';
 
 function Card(props) {
   const {

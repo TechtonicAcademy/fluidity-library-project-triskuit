@@ -1,8 +1,8 @@
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
-import Placeholder from '../styles/assets/images/books/placeholder_book_cover.jpeg';
-import StarRating from './StarRating';
+import Placeholder from '../../styles/assets/images/books/placeholder_book_cover.jpeg';
+import StarRating from '../subcomponents/StarRating';
 
 function BookForm(props) {
   const {
