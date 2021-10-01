@@ -11,32 +11,18 @@ import BookDetails from './components/BookDetails';
 
 const App = () => {
   return (
-    <>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route path="/add">
-            <AddBook />
-          </Route>
-          <Route path="/book/:id/edit">
-            <EditBook />
-          </Route>
-          <Route path="/bookshelf">
-            <Bookshelf />
-          </Route>
-          <Route path="/book/:id">
-            <BookDetails />
-          </Route>
-          <Route>
-            <NotFound />
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
-    </>
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/add" component={AddBook} />
+        <Route path="/book/:id/edit" component={EditBook} />
+        <Route path="/bookshelf" component={Bookshelf} />
+        <Route path="/book/:id" component={BookDetails} />
+        <Route component={NotFound} />
+      </Switch>
+      <Footer />
+    </Router>
   );
 };
 
