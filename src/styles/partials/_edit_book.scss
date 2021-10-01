@@ -10,7 +10,6 @@
         width: 769px;
         display: grid;
         grid-template-areas: 
-        "header header"
         "left1 img"
         "left2 img"
         "btn btn"
@@ -29,10 +28,9 @@
     }
 
     &__h1 {
-        margin: 20px 0 0 0;
+        margin: 20px 0;
         width: 100%;
         text-align: center;
-        grid-area: header;
     }
 
     &__book_cover_wrapper {
@@ -62,8 +60,8 @@
 
     &__label {
         font-size: 16px;
-        width: 200px;
-
+        width: 90%;
+        @include md {width: 150px};
     }
 
     &__input {

@@ -19,12 +19,17 @@ function BookDetails() {
       });
   }, []);
 
-  const { title, author, datePublished, pages, rating, synopsis } = book;
+  const {
+    title,
+    author,
+    date_published: datePublished,
+    pages,
+    rating,
+    synopsis,
+  } = book;
 
-  const clickBookDelete = (bookID) => {
-    deleteBook(bookID);
-    history.push('/bookshelf');
-  };
+  const clickBookDelete = (bookID) =>
+    deleteBook(bookID).then(history.push('/bookshelf'));
 
   return Object.keys(book).length !== 0 ? (
     <section className="details">
@@ -33,7 +38,7 @@ function BookDetails() {
       <div className="details__author">{author}</div>
       <div className="details__rating">
         <span className="details__label">Rating</span>
-        <StarRating rating={rating} color="black" className="details__rating" />
+        <StarRating rating={rating} className="details__stars" viewOnly />
       </div>
       <span className="details__published">{datePublished}</span>
       <span className="details__pages">{pages}</span>
@@ -43,27 +48,21 @@ function BookDetails() {
         <button
           type="button"
           className="main__link"
-          onClick={() => {
-            history.push(`/book/${id}/edit`);
-          }}
+          onClick={() => history.push(`/book/${id}/edit`)}
         >
           Edit
         </button>
         <button
           type="button"
           className="main__link main__link--delete"
-          onClick={() => {
-            clickBookDelete(id);
-          }}
+          onClick={() => clickBookDelete(id)}
         >
           Delete
         </button>
         <button
           type="button"
           className="main__link main__link--solid"
-          onClick={() => {
-            history.push(`/bookshelf`);
-          }}
+          onClick={() => history.push(`/bookshelf`)}
         >
           Back
         </button>
