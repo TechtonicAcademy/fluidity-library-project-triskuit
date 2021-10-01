@@ -8,7 +8,7 @@ function Card(props) {
   } = props;
 
   return (
-    <Link to={`/details/${id}`} className="card">
+    <Link to={`/book/${id}`} className="card">
       <img src={placeHolderCover} className="card__image" alt="book cover" />
       <span className="card__title_wrapper">
         <span className="card__title">{title}</span>

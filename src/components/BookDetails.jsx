@@ -1,4 +1,4 @@
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import coverPlaceHolder from '../styles/assets/images/books/placeholder_book_cover.jpeg';
 import { getBook, deleteBook } from '../utils/API';
@@ -13,12 +13,20 @@ function BookDetails() {
     getBook(id)
       .then(({ data }) => setBook(data))
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.log(err);
         history.push('/bookshelf');
       });
   }, []);
 
-  const { title, author, datePublished, pages, rating, synopsis } = book;
+  const {
+    title,
+    author,
+    date_published: datePublished,
+    pages,
+    rating,
+    synopsis,
+  } = book;
 
   const clickBookDelete = (bookID) => {
     deleteBook(bookID);
@@ -32,16 +40,22 @@ function BookDetails() {
       <div className="details__author">{author}</div>
       <div className="details__rating">
         <span className="details__label">Rating</span>
-        <StarRating rating={rating} color="black" className="details__rating" />
+        <StarRating rating={rating} className="details__stars" viewOnly />
       </div>
       <span className="details__published">{datePublished}</span>
       <span className="details__pages">{pages}</span>
       <p className="details__summary">{synopsis}</p>
 
       <div className="details__links">
-        <Link to={`/edit/${id}`} className="main__link">
+        <button
+          type="button"
+          className="main__link"
+          onClick={() => {
+            history.push(`/book/${id}/edit`);
+          }}
+        >
           Edit
-        </Link>
+        </button>
         <button
           type="button"
           className="main__link main__link--delete"
@@ -51,9 +65,15 @@ function BookDetails() {
         >
           Delete
         </button>
-        <Link to="/bookshelf" className="main__link main__link--solid">
+        <button
+          type="button"
+          className="main__link main__link--solid"
+          onClick={() => {
+            history.push(`/bookshelf`);
+          }}
+        >
           Back
-        </Link>
+        </button>
       </div>
     </section>
   ) : (

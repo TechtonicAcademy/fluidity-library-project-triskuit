@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage';
-import BookForm from './components/BookForm';
+import AddBook from './components/AddBook';
+import EditBook from './components/EditBook';
 import Bookshelf from './components/Bookshelf';
 import NotFound from './components/NotFound';
-import Edit from './components/Edit';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import BookDetails from './components/BookDetails';
@@ -19,15 +19,15 @@ const App = () => {
             <LandingPage />
           </Route>
           <Route path="/add">
-            <BookForm />
+            <AddBook />
           </Route>
-          <Route path="/edit/:id">
-            <Edit />
+          <Route path="/book/:id/edit">
+            <EditBook />
           </Route>
           <Route path="/bookshelf">
             <Bookshelf />
           </Route>
-          <Route path="/details/:id">
+          <Route path="/book/:id">
             <BookDetails />
           </Route>
           <Route>

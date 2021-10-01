@@ -5,7 +5,7 @@
       "title": "Black Box Thinking",
       "author": "Matthew Syed",
       "synopsis": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, iure! Itaque nesciunt harum obcaecati reprehenderit similique ipsa in accusamus vero.",
-      "date_published": "September 8, 2015",
+      "date_published": "2015-09-08",
       "pages": 336,
       "rating": 4,
       "cover_url": "https://kbimages1-a.akamaihd.net/29a36e0a-08f1-4003-b5f1-e16cd77f49b4/1200/1200/False/black-box-thinking.jpg"
@@ -15,17 +15,17 @@
       "title": "Status Anxiety",
       "author": "Alain de Botton",
       "synopsis": "Praesent nec auctor nisl. Proin placerat velit augue, et facilisis sem pretium in. Sed dignissim odio semper risus lobortis iaculis.",
-      "date_published": "2004",
+      "date_published": "2004-01-01",
       "pages": 320,
       "rating": 3,
-      "cover_url": ""
+      "cover_url": "https://images-na.ssl-images-amazon.com/images/I/91n9BimBhJL.jpg"
     },
     {
       "id": 3,
       "title": "Why Buddhism Is True",
       "author": "Robert Wright",
       "synopsis": "Etiam venenatis nisl ante. Nulla tempor ultrices velit. Curabitur a malesuada sapien. Praesent auctor lorem non facilisis tristique. Mauris viverra.",
-      "date_published": "August 8, 2017",
+      "date_published": "2017-08-08",
       "pages": 336,
       "rating": 5,
       "cover_url": "https://images-na.ssl-images-amazon.com/images/I/71MjoKs-49L.jpg"
@@ -35,9 +35,9 @@
       "title": "Exhalation",
       "author": "Ted Chiang",
       "synopsis": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam egestas in dui vitae finibus. Nunc.",
-      "date_published": "May 7, 2019",
+      "date_published": "2019-05-07",
       "pages": 368,
-      "rating": 4,
+      "rating": 2,
       "cover_url": "https://images-na.ssl-images-amazon.com/images/I/71l64qlkQ1L.jpg"
     }
   ]
