@@ -2,7 +2,8 @@
   "extends": [
     "airbnb",
     "plugin:prettier/recommended",
-    "plugin:react/jsx-runtime"
+    "plugin:react/jsx-runtime",
+    "plugin:cypress/recommended"
   ],
   "env": {
     "browser": true,

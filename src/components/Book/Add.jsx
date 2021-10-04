@@ -1,5 +1,5 @@
-import BookForm from './BookForm';
-import { addBook as add } from '../utils/API';
+import BookForm from './Form';
+import { addBook as add } from '../../utils/API';
 
 function AddBook() {
   const book = {

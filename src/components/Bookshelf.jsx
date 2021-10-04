@@ -1,19 +1,14 @@
 import { useState, useEffect } from 'react';
 import { getBooks } from '../utils/API';
-import Card from './Card';
+import Card from './subcomponents/Card';
 
 function Bookshelf() {
-  // function useQuery() {
-  //   return new URLSearchParams(useLocation().search);
-  // }
-
-  // const query = useQuery();
-
   const [books, setbooks] = useState();
 
   useEffect(() => {
     getBooks()
       .then(({ data }) => setbooks(data))
+      // eslint-disable-next-line no-console
       .catch((err) => console.log(err));
   }, []);
 

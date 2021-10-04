@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import BookForm from './BookForm';
-import { getBook, editBook as edit } from '../utils/API';
+import BookForm from './Form';
+import { getBook, editBook as edit } from '../../utils/API';
 
 function EditBook() {
   const { id } = useParams();

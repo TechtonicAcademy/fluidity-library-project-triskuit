@@ -1,8 +1,8 @@
 import { useParams, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import coverPlaceHolder from '../styles/assets/images/books/placeholder_book_cover.jpeg';
-import { getBook, deleteBook } from '../utils/API';
-import StarRating from './StarRating';
+import coverPlaceHolder from '../../styles/assets/images/books/placeholder_book_cover.jpeg';
+import { getBook, deleteBook } from '../../utils/API';
+import StarRating from '../subcomponents/StarRating';
 
 function BookDetails() {
   const { id } = useParams();

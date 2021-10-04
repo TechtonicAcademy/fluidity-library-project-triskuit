@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import LandingPage from './components/LandingPage';
-import AddBook from './components/AddBook';
-import EditBook from './components/EditBook';
+import AddBook from './components/Book/Add';
+import EditBook from './components/Book/Edit';
 import Bookshelf from './components/Bookshelf';
 import NotFound from './components/NotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import BookDetails from './components/BookDetails';
+import BookDetails from './components/Book/View';
 
 const App = () => {
   return (
