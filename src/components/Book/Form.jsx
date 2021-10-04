@@ -1,6 +1,6 @@
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Placeholder from '../../styles/assets/images/books/placeholder_book_cover.jpeg';
 import StarRating from '../subcomponents/StarRating';
 
@@ -19,6 +19,7 @@ function BookForm(props) {
   } = props;
 
   const history = useHistory();
+  const [starRating, setStarRating] = useState(rating);
 
   const inputTitle = useRef();
   const inputAuthor = useRef();
@@ -46,6 +47,7 @@ function BookForm(props) {
 
   const setRating = (val) => {
     inputRating.current = val;
+    setStarRating(val);
   };
 
   return (
@@ -127,7 +129,7 @@ function BookForm(props) {
         </label>
 
         <label htmlFor="stars" className="edit_form__input_block">
-          <input type="hidden" name="stars" />
+          <input type="hidden" name="stars" value={starRating} />
           <span className="edit_form__label">Rating</span>
           <StarRating
             rating={rating}
