@@ -3,7 +3,7 @@ import { NavLink, Link, useHistory } from 'react-router-dom';
 
 function Header() {
   const [menuToggle, setMenuToggle] = useState(false);
-  const head = useRef(null);
+  const head = useRef();
   const searchInput = useRef();
   const history = useHistory();
 
@@ -16,6 +16,7 @@ function Header() {
   const handleSearch = (event) => {
     event.preventDefault();
     history.push(`/bookshelf?q=${searchInput.current.value}`);
+    toggle(false);
   };
 
   useEffect(() => {
