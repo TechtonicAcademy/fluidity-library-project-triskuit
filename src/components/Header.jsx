@@ -1,15 +1,23 @@
 import { useRef, useEffect, useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 
 function Header() {
   const [menuToggle, setMenuToggle] = useState(false);
-  const head = useRef(null);
+  const head = useRef();
+  const searchInput = useRef();
+  const history = useHistory();
 
   const toggle = (bool) =>
     setMenuToggle((prev) => {
       if (bool === false || bool === true) return bool;
       return !prev;
     });
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    history.push(`/bookshelf?q=${searchInput.current.value}`);
+    toggle(false);
+  };
 
   useEffect(() => {
     const outsideClick = (e) => {
@@ -64,11 +72,12 @@ function Header() {
                 add book
               </NavLink>
             </li>
-            <form action="#" className="nav__form">
+            <form action="#" className="nav__form" onSubmit={handleSearch}>
               <input
                 type="text"
                 placeholder="Search by Title/Author"
                 className="nav__search"
+                ref={searchInput}
               />
               <button className="nav__button" type="submit">
                 <i className="fas fa-search" />
