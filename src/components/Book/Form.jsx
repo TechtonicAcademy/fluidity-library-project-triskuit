@@ -50,6 +50,9 @@ function BookForm(props) {
     setStarRating(val);
   };
 
+  let today = new Date();
+  today = today.toISOString().substring(0, 10);
+
   return (
     <form action="#" className="edit_form" onSubmit={handleSubmit}>
       <div className="edit_form__left">
@@ -104,12 +107,13 @@ function BookForm(props) {
           />
         </label>
 
-        <label htmlFor="publish_date" className="edit_form__input_block">
+        <label htmlFor="published_date" className="edit_form__input_block">
           <span className="edit_form__label">Published</span>
           <input
             type="date"
             className="edit_form__input"
             name="published_date"
+            max={today}
             defaultValue={datePublished}
             ref={inputPublished}
           />
