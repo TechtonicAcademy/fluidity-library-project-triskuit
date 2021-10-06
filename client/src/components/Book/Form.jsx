@@ -13,7 +13,7 @@ function BookForm(props) {
       date_published: datePublished,
       pages,
       rating,
-      cover_url: coverUrl,
+      cover,
     },
     submitForm,
   } = props;
@@ -83,7 +83,7 @@ function BookForm(props) {
       </div>
 
       <div className="edit_form__book_cover_wrapper">
-        <input type="hidden" name="cover" value={coverUrl} ref={inputCover} />
+        <input type="hidden" name="cover" value={cover} ref={inputCover} />
         <img src={Placeholder} alt="Book cover" className="edit_form__image" />
         <button type="button" className="edit_form__btn">
           Change Image
@@ -158,8 +158,7 @@ BookForm.propTypes = {
     synopsis: PropTypes.string,
     datePublished: PropTypes.string,
     date_published: PropTypes.string,
-    cover_url: PropTypes.string,
-    coverUrl: PropTypes.string,
+    cover: PropTypes.string,
     pages: PropTypes.number,
     rating: PropTypes.number,
   }),
@@ -173,8 +172,7 @@ BookForm.defaultProps = {
     synopsis: null,
     datePublished: null,
     date_published: null,
-    cover_url: null,
-    coverUrl: null,
+    cover: null,
     pages: 0,
     rating: 0,
   }),
