@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-const endpoint = 'http://localhost:8080/api';
+const endpoint = 'http://localhost:3000';
 
-export const getBooks = (query) => {
-  return query
-    ? axios.get(`${endpoint}/books/search?query=${query}`)
-    : axios.get(`${endpoint}/books/`);
+export const getBooks = () => {
+  return axios.get(`${endpoint}/books`);
 };
 
 export const getBook = (id) => {

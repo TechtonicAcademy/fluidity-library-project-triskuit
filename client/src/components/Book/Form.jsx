@@ -4,11 +4,11 @@ import { useRef } from 'react';
 import StarRating from '../subcomponents/StarRating';
 import ImageSelect from '../subcomponents/ImageSelect';
 
-function BookForm(props) {
+function Form(props) {
   const {
     book: {
       title,
-      author,
+      Author: { first_name: firstName, last_name: lastName },
       synopsis,
       date_published: datePublished,
       pages,
@@ -21,7 +21,8 @@ function BookForm(props) {
   const history = useHistory();
 
   const inputTitle = useRef();
-  const inputAuthor = useRef();
+  const inputFirstName = useRef();
+  const inputLastName = useRef();
   const inputSynopsis = useRef();
   const inputPublished = useRef();
   const inputPages = useRef();
@@ -33,14 +34,19 @@ function BookForm(props) {
     const newBook = {
       ...props.book,
       title: inputTitle.current.value,
-      author: inputAuthor.current.value,
-      synopsis: inputSynopsis.current.value,
-      date_published: inputPublished.current.value,
-      pages: parseInt(inputPages.current.value, 10),
-      rating: parseInt(inputRating.current, 10),
-      cover: inputCover.current,
+      author: {
+        first_name: inputFirstName.current.value,
+        last_name: inputLastName.current.value,
+      },
+      synopsis: inputSynopsis.current.value || null,
+      date_published: inputPublished.current.value || null,
+      pages: parseInt(inputPages.current.value, 10) || null,
+      rating: parseInt(inputRating.current, 10) || null,
+      cover: inputCover.current || null,
     };
-    submitForm(newBook).then(history.push('/bookshelf'));
+    submitForm(newBook)
+      .catch((err) => console.log(err))
+      .then(() => history.push('/bookshelf'));
   };
 
   const setRating = (val) => {
@@ -48,7 +54,6 @@ function BookForm(props) {
   };
 
   const setCover = (val) => {
-    // console.log(val);
     inputCover.current = val;
   };
 
@@ -73,15 +78,28 @@ function BookForm(props) {
           </label>
         </div>
 
-        <label htmlFor="author" className="edit_form__input_block">
-          <span className="edit_form__label">Author</span>
+        <label htmlFor="firstName" className="edit_form__input_block">
+          <span className="edit_form__label">First Name</span>
           <input
             type="text"
             className="edit_form__input"
-            name="author"
+            name="firstName"
             autoComplete="off"
-            defaultValue={author}
-            ref={inputAuthor}
+            defaultValue={firstName}
+            ref={inputFirstName}
+            required
+          />
+        </label>
+
+        <label htmlFor="lastName" className="edit_form__input_block">
+          <span className="edit_form__label">Last Name</span>
+          <input
+            type="text"
+            className="edit_form__input"
+            name="lastName"
+            autoComplete="off"
+            defaultValue={lastName}
+            ref={inputLastName}
             required
           />
         </label>
@@ -152,10 +170,15 @@ function BookForm(props) {
   );
 }
 
-BookForm.propTypes = {
+Form.propTypes = {
   book: PropTypes.shape({
     title: PropTypes.string,
-    author: PropTypes.string,
+    Author: PropTypes.shape({
+      firstName: PropTypes.string,
+      first_name: PropTypes.string,
+      lastName: PropTypes.string,
+      last_name: PropTypes.string,
+    }).isRequired,
     synopsis: PropTypes.string,
     datePublished: PropTypes.string,
     date_published: PropTypes.string,
@@ -166,10 +189,15 @@ BookForm.propTypes = {
   submitForm: PropTypes.func.isRequired,
 };
 
-BookForm.defaultProps = {
+Form.defaultProps = {
   book: PropTypes.shape({
     title: '',
-    author: '',
+    Author: PropTypes.shape({
+      firstName: '',
+      first_name: '',
+      lastName: '',
+      last_name: '',
+    }).isRequired,
     synopsis: '',
     datePublished: '',
     date_published: '',
@@ -179,4 +207,4 @@ BookForm.defaultProps = {
   }),
 };
 
-export default BookForm;
+export default Form;

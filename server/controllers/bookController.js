@@ -46,10 +46,10 @@ module.exports = {
         AuthorId: author[0].dataValues.id,
       };
       Book.create(bookData)
-        .then(res.end())
-        .catch((err) => res.status(422).json(err));
+        .then((post)=>res.json(post))
+        .catch((err) => res.json(err));
     })
-    .catch((err)=>res.status(422).json(err));
+    .catch((err)=>res.json(err));
   },
 
   update: (req, res) => {

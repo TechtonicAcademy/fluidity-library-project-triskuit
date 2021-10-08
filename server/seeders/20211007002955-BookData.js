@@ -31,7 +31,7 @@ module.exports = {
           updatedAt: date,
         },
       ],
-      {}
+      {},
     );
 
     let authors = await queryInterface.sequelize.query(
@@ -49,8 +49,7 @@ module.exports = {
           date_published: '2015-09-08',
           pages: 336,
           rating: 4,
-          cover:
-            'https://kbimages1-a.akamaihd.net/29a36e0a-08f1-4003-b5f1-e16cd77f49b4/1200/1200/False/black-box-thinking.jpg',
+          cover:'',
           createdAt: date,
           updatedAt: date,
           AuthorId: authors[0].id,
@@ -62,8 +61,7 @@ module.exports = {
           date_published: '2004-01-01',
           pages: 320,
           rating: 3,
-          cover:
-            'https://images-na.ssl-images-amazon.com/images/I/91n9BimBhJL.jpg',
+          cover:'',
           createdAt: date,
           updatedAt: date,
           AuthorId: authors[1].id,
@@ -75,8 +73,7 @@ module.exports = {
           date_published: '2017-08-08',
           pages: 336,
           rating: 5,
-          cover:
-            'https://images-na.ssl-images-amazon.com/images/I/71MjoKs-49L.jpg',
+          cover:'',
           createdAt: date,
           updatedAt: date,
           AuthorId: authors[2].id,
@@ -88,14 +85,13 @@ module.exports = {
           date_published: '2019-05-07',
           pages: 368,
           rating: 2,
-          cover:
-            'https://images-na.ssl-images-amazon.com/images/I/71l64qlkQ1L.jpg',
+          cover:'',
           createdAt: date,
           updatedAt: date,
           AuthorId: authors[3].id,
         },
       ],
-      {}
+      {},
     );
   },
 
