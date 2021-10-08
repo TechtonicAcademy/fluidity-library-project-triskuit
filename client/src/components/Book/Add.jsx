@@ -9,7 +9,7 @@ function AddBook() {
     synopsis: '',
     date_published: '',
     pages: 0,
-    rating: 0,
+    rating: 3,
     cover: '',
   };
 

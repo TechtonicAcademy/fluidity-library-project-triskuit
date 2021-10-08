@@ -34,7 +34,7 @@ function Form(props) {
     const newBook = {
       ...props.book,
       title: inputTitle.current.value,
-      author: {
+      Author: {
         first_name: inputFirstName.current.value,
         last_name: inputLastName.current.value,
       },
@@ -44,6 +44,7 @@ function Form(props) {
       rating: parseInt(inputRating.current, 10) || null,
       cover: inputCover.current || null,
     };
+    console.log(newBook);
     submitForm(newBook)
       .catch((err) => console.log(err))
       .then(() => history.push('/bookshelf'));
@@ -77,32 +78,47 @@ function Form(props) {
             />
           </label>
         </div>
-
-        <label htmlFor="firstName" className="edit_form__input_block">
-          <span className="edit_form__label">First Name</span>
-          <input
-            type="text"
-            className="edit_form__input"
-            name="firstName"
-            autoComplete="off"
-            defaultValue={firstName}
-            ref={inputFirstName}
-            required
-          />
-        </label>
-
-        <label htmlFor="lastName" className="edit_form__input_block">
-          <span className="edit_form__label">Last Name</span>
-          <input
-            type="text"
-            className="edit_form__input"
-            name="lastName"
-            autoComplete="off"
-            defaultValue={lastName}
-            ref={inputLastName}
-            required
-          />
-        </label>
+        <div className="edit_form__input_block ">
+          <span className="edit_form__label">Author</span>
+          <div className="edit_form__input_block edit_form__input_block--double">
+            <label
+              htmlFor="firstName"
+              className=" edit_form__input_block edit_form__input_block--half"
+            >
+              <span className="edit_form__label edit_form__label--hidden">
+                First Name
+              </span>
+              <input
+                placeholder="First"
+                type="text"
+                className="edit_form__input edit_form__input--first_name"
+                name="firstName"
+                autoComplete="off"
+                defaultValue={firstName}
+                ref={inputFirstName}
+                required
+              />
+            </label>
+            <label
+              htmlFor="lastName"
+              className="edit_form__input_block edit_form__input_block--half"
+            >
+              <span className="edit_form__label edit_form__label--hidden">
+                Last Name
+              </span>
+              <input
+                placeholder="Last"
+                type="text"
+                className="edit_form__input"
+                name="lastName"
+                autoComplete="off"
+                defaultValue={lastName}
+                ref={inputLastName}
+                required
+              />
+            </label>
+          </div>
+        </div>
       </div>
 
       <ImageSelect cover={cover} setCover={setCover} />
