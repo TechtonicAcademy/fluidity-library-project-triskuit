@@ -36,6 +36,7 @@
     &__book_cover_wrapper {
         display: flex;
         flex-direction: column;
+        align-items: center;
         row-gap: 10px;
         @include md {
             grid-area: img;
@@ -43,8 +44,10 @@
     }
 
     &__image {
-        height: 300px;
-        object-fit: contain;
+        height: 350px;
+        width: 220px;
+        object-fit: cover;
+        border-radius: 4px;
     }
 
     &__input_block {
@@ -75,14 +78,14 @@
     }
 
     &__btn {
-        border-radius: 8px;
+        border-radius: 4px;
         border: 1px solid black;
         background: white;
         color: black;
         padding: 10px;
         font-size: 14px;
         margin: 5px auto;
-        width: 200px;
+        width: 220px;
         font-weight: bold;
         text-decoration: none;
         text-align: center;

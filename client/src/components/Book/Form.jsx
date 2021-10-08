@@ -1,8 +1,8 @@
 import { Link, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
-import Placeholder from '../../styles/assets/images/books/placeholder_book_cover.jpeg';
+import { useRef } from 'react';
 import StarRating from '../subcomponents/StarRating';
+import ImageSelect from '../subcomponents/ImageSelect';
 
 function BookForm(props) {
   const {
@@ -19,7 +19,6 @@ function BookForm(props) {
   } = props;
 
   const history = useHistory();
-  const [starRating, setStarRating] = useState(rating);
 
   const inputTitle = useRef();
   const inputAuthor = useRef();
@@ -39,16 +38,22 @@ function BookForm(props) {
       date_published: inputPublished.current.value,
       pages: parseInt(inputPages.current.value, 10),
       rating: parseInt(inputRating.current, 10),
-      cover_url: inputCover.current.value,
+      cover: inputCover.current,
     };
-    submitForm(newBook);
-    history.push('/bookshelf');
+    submitForm(newBook).then(history.push('/bookshelf'));
   };
 
   const setRating = (val) => {
     inputRating.current = val;
-    setStarRating(val);
   };
+
+  const setCover = (val) => {
+    // console.log(val);
+    inputCover.current = val;
+  };
+
+  let today = new Date();
+  today = today.toISOString().substring(0, 10);
 
   return (
     <form action="#" className="edit_form" onSubmit={handleSubmit}>
@@ -82,13 +87,7 @@ function BookForm(props) {
         </label>
       </div>
 
-      <div className="edit_form__book_cover_wrapper">
-        <input type="hidden" name="cover" value={cover} ref={inputCover} />
-        <img src={Placeholder} alt="Book cover" className="edit_form__image" />
-        <button type="button" className="edit_form__btn">
-          Change Image
-        </button>
-      </div>
+      <ImageSelect cover={cover} setCover={setCover} />
 
       <div className="edit_form__left">
         <label htmlFor="synopsis" className="edit_form__input_block">
@@ -99,6 +98,7 @@ function BookForm(props) {
             id=""
             cols="30"
             rows="10"
+            maxLength="2000"
             defaultValue={synopsis}
             ref={inputSynopsis}
           />
@@ -110,6 +110,7 @@ function BookForm(props) {
             type="date"
             className="edit_form__input"
             name="published_date"
+            max={today}
             defaultValue={datePublished}
             ref={inputPublished}
           />
@@ -121,7 +122,7 @@ function BookForm(props) {
             type="number"
             className="edit_form__input"
             name="pages"
-            min={1}
+            min={0}
             max={2000}
             defaultValue={pages}
             ref={inputPages}
@@ -129,7 +130,7 @@ function BookForm(props) {
         </label>
 
         <label htmlFor="stars" className="edit_form__input_block">
-          <input type="hidden" name="stars" value={starRating} />
+          {/* <input type="hidden" name="stars" value={rating} /> */}
           <span className="edit_form__label">Rating</span>
           <StarRating
             rating={rating}
@@ -167,13 +168,13 @@ BookForm.propTypes = {
 
 BookForm.defaultProps = {
   book: PropTypes.shape({
-    title: null,
-    author: null,
-    synopsis: null,
-    datePublished: null,
-    date_published: null,
-    cover: null,
-    pages: 0,
+    title: '',
+    author: '',
+    synopsis: '',
+    datePublished: '',
+    date_published: '',
+    cover: '',
+    pages: null,
     rating: 0,
   }),
 };

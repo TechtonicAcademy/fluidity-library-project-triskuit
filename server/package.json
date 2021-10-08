@@ -11,7 +11,7 @@
     "build": "cd ../client && npm run build",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\""
+    "start:dev": "concurrently \"nodemon server.js --ignore 'client/*'\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.3.0",
+    "faker": "^5.5.3",
     "nodemon": "^2.0.13"
   }
 }
