@@ -26,6 +26,7 @@ function BookDetails() {
     pages,
     rating,
     synopsis,
+    cover
   } = book;
 
   const clickBookDelete = (bookID) =>
@@ -34,7 +35,11 @@ function BookDetails() {
   return Object.keys(book).length !== 0 ? (
     <section className="details">
       <div className="details__title">{title}</div>
-      <img src={coverPlaceHolder} className="details__image" alt="book cover" />
+      <img
+        src={cover || coverPlaceHolder}
+        className="details__image"
+        alt="book cover"
+      />
       <div className="details__author">{author}</div>
       <div className="details__rating">
         <span className="details__label">Rating</span>

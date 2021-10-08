@@ -4,12 +4,16 @@ import placeHolderCover from '../../styles/assets/images/books/placeholder_book_
 
 function Card(props) {
   const {
-    book: { title, author, id },
+    book: { title, author, id, cover },
   } = props;
 
   return (
     <Link to={`/book/${id}`} className="card">
-      <img src={placeHolderCover} className="card__image" alt="book cover" />
+      <img
+        src={cover || placeHolderCover}
+        className="card__image"
+        alt="book cover"
+      />
       <span className="card__title_wrapper">
         <span className="card__title">{title}</span>
       </span>

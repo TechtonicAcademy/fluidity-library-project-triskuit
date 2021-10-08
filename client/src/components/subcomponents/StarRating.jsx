@@ -1,6 +1,6 @@
 import { Rating, RatingView } from 'react-simple-star-rating';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function StarRating(props) {
   const { rating, color, emptyColor, size, className, viewOnly, callBack } =
@@ -11,6 +11,11 @@ function StarRating(props) {
     callBack(rate);
     setStars(rate);
   };
+
+  useEffect(() => {
+    setStars(rating);
+    callBack(rating);
+  }, [rating]);
 
   const svg = (
     <svg
