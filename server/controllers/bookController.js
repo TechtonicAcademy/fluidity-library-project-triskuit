@@ -36,27 +36,34 @@ module.exports = {
   },
 
   create: (req, res) => {
-    const authorData = { first_name, last_name } = req.body.author;
+    const authorData = ({ first_name, last_name } = req.body.Author);
     Author.findOrCreate({
       where: authorData,
     })
-    .then((author) => {
-      const bookData = {
-        ...req.body,
-        AuthorId: author[0].dataValues.id,
-      };
-      Book.create(bookData)
-        .then(res.end())
-        .catch((err) => res.status(422).json(err));
-    })
-    .catch((err)=>res.status(422).json(err));
+      .then((author) => {
+        const bookData = {
+          ...req.body,
+          AuthorId: author[0].dataValues.id,
+        };
+        Book.create(bookData)
+          .then((post) => res.json(post))
+          .catch((err) => res.json(err));
+      })
+      .catch((err) => res.json(err));
   },
 
   update: (req, res) => {
+    // console.log(req.body);
     Book.update(req.body, {
       where: { id: req.params.id },
     })
-      .then(() => res.end())
+      .then(() => {
+        console.log(req.body.Author);
+        Author.update(req.body.Author, {
+          where: { id: req.body.AuthorId },
+        }).catch((err) => res.json(err));
+      })
+      .then((data)=>res.json(data))
       .catch((err) => res.status(422).json(err));
   },
 

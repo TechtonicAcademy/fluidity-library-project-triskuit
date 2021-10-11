@@ -5,11 +5,11 @@ function AddBook() {
   const book = {
     id: 0,
     title: '',
-    author: '',
+    Author: { first_name: '', last_name: '' },
     synopsis: '',
-    published: '',
+    date_published: '',
     pages: 0,
-    rating: 0,
+    rating: 3,
     cover: '',
   };
 

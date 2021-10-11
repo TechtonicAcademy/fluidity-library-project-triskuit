@@ -5,7 +5,10 @@ import { getBook, editBook as edit } from '../../utils/API';
 
 function EditBook() {
   const { id } = useParams();
-  const [book, setbook] = useState({ title: '', author: '' });
+  const [book, setbook] = useState({
+    title: '',
+    Author: { first_name: '', last_name: '' },
+  });
 
   useEffect(() => {
     getBook(id)

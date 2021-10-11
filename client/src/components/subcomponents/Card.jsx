@@ -4,7 +4,12 @@ import placeHolderCover from '../../styles/assets/images/books/placeholder_book_
 
 function Card(props) {
   const {
-    book: { title, author, id, cover },
+    book: {
+      title,
+      Author: { first_name: firstName, last_name: lastName },
+      id,
+      cover,
+    },
   } = props;
 
   return (
@@ -17,7 +22,9 @@ function Card(props) {
       <span className="card__title_wrapper">
         <span className="card__title">{title}</span>
       </span>
-      <div className="card__author">{author}</div>
+      <div className="card__author">
+        {firstName} {lastName}
+      </div>
     </Link>
   );
 }
@@ -26,7 +33,13 @@ Card.propTypes = {
   book: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
+    cover: PropTypes.string,
+    Author: PropTypes.shape({
+      firstName: PropTypes.string,
+      first_name: PropTypes.string,
+      lastName: PropTypes.string,
+      last_name: PropTypes.string,
+    }).isRequired,
   }).isRequired,
 };
 

@@ -4,14 +4,16 @@ import coverPlaceHolder from '../../styles/assets/images/books/placeholder_book_
 import { getBook, deleteBook } from '../../utils/API';
 import StarRating from '../subcomponents/StarRating';
 
-function BookDetails() {
+function View() {
   const { id } = useParams();
   const history = useHistory();
-  const [book, setBook] = useState({});
+  const [book, setBook] = useState({ Author: {} });
 
   useEffect(() => {
     getBook(id)
-      .then(({ data }) => setBook(data))
+      .then(({ data }) => {
+        setBook(data);
+      })
       .catch((err) => {
         // eslint-disable-next-line no-console
         console.log(err);
@@ -21,16 +23,16 @@ function BookDetails() {
 
   const {
     title,
-    author,
+    Author: { first_name: firstName, last_name: lastName },
     date_published: datePublished,
     pages,
     rating,
     synopsis,
-    cover
+    cover,
   } = book;
 
   const clickBookDelete = (bookID) =>
-    deleteBook(bookID).then(history.push('/bookshelf'));
+    deleteBook(bookID).then(() => history.push('/bookshelf'));
 
   return Object.keys(book).length !== 0 ? (
     <section className="details">
@@ -40,7 +42,9 @@ function BookDetails() {
         className="details__image"
         alt="book cover"
       />
-      <div className="details__author">{author}</div>
+      <div className="details__author">
+        {firstName} {lastName}
+      </div>
       <div className="details__rating">
         <span className="details__label">Rating</span>
         <StarRating rating={rating} className="details__stars" viewOnly />
@@ -78,4 +82,4 @@ function BookDetails() {
   );
 }
 
-export default BookDetails;
+export default View;

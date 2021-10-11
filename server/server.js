@@ -34,7 +34,7 @@ app.get('*', (req, res) => {
 });
 
 sequelize
-  .sync({ force: true })
+  .sync()
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server now listening on http://localhost:${PORT}!`);

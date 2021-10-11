@@ -7,7 +7,7 @@ import Bookshelf from './components/Bookshelf';
 import NotFound from './components/NotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import BookDetails from './components/Book/View';
+import View from './components/Book/View';
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/add" component={AddBook} />
         <Route path="/book/:id/edit" component={EditBook} />
         <Route path="/bookshelf" component={Bookshelf} />
-        <Route path="/book/:id" component={BookDetails} />
+        <Route path="/book/:id" component={View} />
         <Route component={NotFound} />
       </Switch>
       <Footer />

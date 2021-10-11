@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: true,
         validate: {
-          len: [0, 2000]
+          len: [0, 2000],
         },
       },
       // date_published (DATEONLY, NULL, length 10 characters)
@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       // cover (VARCHAR, NULL)
       cover: {
-        type: DataTypes.TEXT,
+        type: DataTypes.TEXT('medium'),
         allowNull: true,
       },
     },
