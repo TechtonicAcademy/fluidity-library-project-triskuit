@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       // cover (VARCHAR, NULL)
       cover: {
-        type: DataTypes.TEXT,
+        type: DataTypes.TEXT('medium'),
         allowNull: true,
       },
     },
