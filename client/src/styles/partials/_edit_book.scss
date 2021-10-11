@@ -160,3 +160,8 @@
         margin-bottom: 20px;
     }
 }
+
+.edit_form__textarea {
+    min-height: 150px;
+    resize: vertical;
+}
