@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import coverPlaceHolder from '../../styles/assets/images/books/placeholder_book_cover.jpeg';
 import { getBook, deleteBook } from '../../utils/API';
 import StarRating from '../subcomponents/StarRating';
+import Loading from '../subcomponents/Loading';
 
 function View() {
   const { id } = useParams();
@@ -12,6 +13,7 @@ function View() {
   useEffect(() => {
     getBook(id)
       .then(({ data }) => {
+        if (data === null) history.push('/bookshelf');
         setBook(data);
       })
       .catch((err) => {
@@ -34,7 +36,9 @@ function View() {
   const clickBookDelete = (bookID) =>
     deleteBook(bookID).then(() => history.push('/bookshelf'));
 
-  return Object.keys(book).length !== 0 ? (
+  if (!('id' in book)) return <Loading />;
+
+  return (
     <section className="details">
       <div className="details__title">{title}</div>
       <img
@@ -77,8 +81,6 @@ function View() {
         </button>
       </div>
     </section>
-  ) : (
-    <></>
   );
 }
 

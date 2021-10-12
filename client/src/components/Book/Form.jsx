@@ -1,4 +1,4 @@
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import StarRating from '../subcomponents/StarRating';
@@ -44,8 +44,8 @@ function Form(props) {
       rating: parseInt(inputRating.current, 10) || null,
       cover: inputCover.current || null,
     };
-    console.log(newBook);
     submitForm(newBook)
+      // eslint-disable-next-line no-console
       .catch((err) => console.log(err))
       .then(() => history.push('/bookshelf'));
   };
@@ -128,7 +128,7 @@ function Form(props) {
           <span className="edit_form__label">Synopsis</span>
           <textarea
             name="synopsis"
-            className="edit_form__input"
+            className="edit_form__input edit_form__textarea"
             id=""
             cols="30"
             rows="10"
@@ -178,9 +178,13 @@ function Form(props) {
         <button type="submit" className="edit_form__btn edit_form__btn--submit">
           Submit
         </button>
-        <Link to="/bookshelf" className="edit_form__btn">
+        <button
+          type="button"
+          className="edit_form__btn"
+          onClick={() => history.push('/bookshelf')}
+        >
           Cancel
-        </Link>
+        </button>
       </div>
     </form>
   );
@@ -206,21 +210,21 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  book: PropTypes.shape({
+  book: {
     title: '',
-    Author: PropTypes.shape({
+    Author: {
       firstName: '',
       first_name: '',
       lastName: '',
       last_name: '',
-    }).isRequired,
+    },
     synopsis: '',
     datePublished: '',
     date_published: '',
     cover: '',
     pages: null,
     rating: 0,
-  }),
+  },
 };
 
 export default Form;

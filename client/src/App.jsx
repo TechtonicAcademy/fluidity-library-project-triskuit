@@ -12,16 +12,20 @@ import View from './components/Book/View';
 const App = () => {
   return (
     <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route path="/add" component={AddBook} />
-        <Route path="/book/:id/edit" component={EditBook} />
-        <Route path="/bookshelf" component={Bookshelf} />
-        <Route path="/book/:id" component={View} />
-        <Route component={NotFound} />
-      </Switch>
-      <Footer />
+      <div className="App__wrapper">
+        <Header />
+        <div className="App__main">
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/add" component={AddBook} />
+            <Route path="/book/:id/edit" component={EditBook} />
+            <Route path="/bookshelf" component={Bookshelf} />
+            <Route path="/book/:id" component={View} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+        <Footer />
+      </div>
     </Router>
   );
 };

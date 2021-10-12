@@ -1,11 +1,13 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: $background-color;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body,
+#root {
+    height: 100%;
 }
 
 .nav {
@@ -15,18 +17,26 @@ body {
     width: 100%;
 
     &__wrapper {
-        width: 100%;
+        width: 100vmax;
         margin: auto;
         display: flex;
-        @include sm {width: 480px;}
-        @include md {width: 769px;}
-        @include lg {width: 1025px;}
+        @include sm {
+            width: 480px;
+        }
+        @include md {
+            width: 769px;
+        }
+        @include lg {
+            width: 1025px;
+        }
     }
 
     &__left {
         width: 70%;
         display: flex;
-        @include md {width: 30%;}
+        @include md {
+            width: 30%;
+        }
     }
 
     &__right {
@@ -34,7 +44,9 @@ body {
         display: flex;
         align-items: center;
         justify-content: right;
-        @include md {width: 70%;}
+        @include md {
+            width: 70%;
+        }
     }
 
     &__logo {
@@ -42,7 +54,7 @@ body {
         margin: 0;
         text-decoration: none;
         color: black;
-        
+
         :hover {
             text-decoration: underline;
         }
@@ -65,7 +77,7 @@ body {
             gap: 20px;
             align-items: center;
             justify-content: right;
-            position:static;
+            position: static;
             margin: 0;
             padding: 0;
         }
@@ -74,7 +86,6 @@ body {
             display: block;
             border-bottom: 1px solid $border-color;
         }
-
     }
 
     &__li {
@@ -131,6 +142,53 @@ body {
 
     &__text {
         margin: auto;
-        padding: 10px
+        padding: 10px;
+    }
+}
+
+.Loading {
+    &__wrapper {
+        width: 100%;
+        // min-height: 250px;
+        height: 80vh;
+        display: flex;
+        align-items: center;
+    }
+
+    &__span {
+        margin: auto;
+        width: 80px;
+
+        &--ellipsis {
+            &:after {
+                overflow: hidden;
+                display: inline-block;
+                vertical-align: bottom;
+                -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+                animation: ellipsis steps(4, end) 1800ms infinite;
+                content: "\2026";
+                width: 0px;
+            }
+        }
+    }
+}
+
+@keyframes ellipsis {
+    to {
+        width: 1.25em;
+    }
+}
+
+@-webkit-keyframes ellipsis {
+    to {
+        width: 1.25em;
+    }
+}
+
+.App {
+    &__wrapper {
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
     }
 }

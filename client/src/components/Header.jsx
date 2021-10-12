@@ -1,11 +1,13 @@
 import { useRef, useEffect, useState } from 'react';
-import { NavLink, Link, useHistory } from 'react-router-dom';
+
+import { NavLink, Link, useHistory, useLocation } from 'react-router-dom';
 
 function Header() {
   const [menuToggle, setMenuToggle] = useState(false);
   const head = useRef();
   const searchInput = useRef();
   const history = useHistory();
+  const location = useLocation();
 
   const toggle = (bool) =>
     setMenuToggle((prev) => {
@@ -28,6 +30,11 @@ function Header() {
     document.addEventListener('mousedown', outsideClick);
     return () => document.removeEventListener('mousedown', outsideClick);
   }, [menuToggle]);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    searchInput.current.value = queryParams.get('q');
+  }, [location]);
 
   return (
     <nav className="nav" ref={head}>
