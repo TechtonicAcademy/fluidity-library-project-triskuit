@@ -223,7 +223,7 @@ Form.defaultProps = {
     date_published: '',
     cover: '',
     pages: null,
-    rating: 0,
+    rating: 1,
   },
 };
 

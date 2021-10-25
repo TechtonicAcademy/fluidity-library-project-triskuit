@@ -3,12 +3,12 @@ import { addBook as add } from '../../utils/API';
 
 function AddBook() {
   const book = {
-    id: 0,
+    id: null,
     title: '',
     Author: { first_name: '', last_name: '' },
     synopsis: '',
     date_published: '',
-    pages: 0,
+    pages: null,
     rating: 3,
     cover: '',
   };
