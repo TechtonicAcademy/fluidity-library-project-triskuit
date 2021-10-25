@@ -1,7 +1,8 @@
 // import data from './_bookData';
 // TODO: implement once image uploads are functional
+// TODO: still not done due to time constraints
 
-describe('User can add a book', () => {
+describe('User cannot upload a non image as a cover', () => {
   it('visit the book page', () => {
     // 1. Navigate to the /add page
     cy.visit('http://localhost:1234/add');

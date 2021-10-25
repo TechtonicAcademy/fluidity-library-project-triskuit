@@ -2,17 +2,14 @@ import data from './_bookData';
 
 describe('User can add a book', () => {
   it('Visits the book page', () => {
-    // 1. Navigate to the /add page
+    // 1. Navigate to the home page page
     cy.visit('http://localhost:1234/');
-    cy.get('.hero__description')
-      .should('contain', 'Read em & weep')
-      .should('be.visible');
     cy.get('.nav__links').contains('add book').should('be.visible').click();
-    cy.url().should('include', '/add');
-    cy.get('.edit_form__h1').should('contain', 'Add Book');
+    cy.url().should('contain', 'add');
+    cy.get('.edit_form__h1').should('contain', 'Add Book').should('be.visible');
   });
 
-  it('Enters books data', () => {
+  it('Enters book data', () => {
     // 2. Enter test data into corresponding fields
     Object.entries(data.input).forEach((e) => {
       const [key, value] = e;
