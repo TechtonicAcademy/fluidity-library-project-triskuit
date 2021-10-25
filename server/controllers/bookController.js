@@ -53,17 +53,15 @@ module.exports = {
   },
 
   update: (req, res) => {
-    // console.log(req.body);
     Book.update(req.body, {
       where: { id: req.params.id },
     })
       .then(() => {
-        console.log(req.body.Author);
         Author.update(req.body.Author, {
           where: { id: req.body.AuthorId },
         }).catch((err) => res.json(err));
       })
-      .then((data)=>res.json(data))
+      .then((data) => res.json(data))
       .catch((err) => res.status(422).json(err));
   },
 

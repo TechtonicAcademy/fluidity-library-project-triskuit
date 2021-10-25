@@ -15,7 +15,8 @@ function toTitleCase(str) {
 const data = {
   input: {
     title: toTitleCase(faker.random.words(3)),
-    author: faker.name.findName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     published_date: faker.date
       .between('1900-01-01', today)
       .toISOString()
